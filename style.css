@@ -1,3 +1,18 @@
+.project-badges {
+    margin-bottom: 15px;
+}
+
+.category-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    background: rgba(0, 255, 200, 0.12);
+    color: #22d3ee;
+    border: 1px solid rgba(34, 211, 238, 0.3);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
 :root {
     --color-bg: #030a16;
     --color-surface: rgba(15, 23, 42, 0.4);

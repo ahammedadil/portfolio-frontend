@@ -51,11 +51,8 @@
                 <div class="about-photo glass-card">
                     <img src="photo_2026-04-19_00-05-00.jpg" alt="Ahammed Adil" class="profile-img">
                 </div>
-                <div class="about-text glass-card">
-                    <p>I am a developer with 3+ years of coding experience, focused on building and understanding modern web technologies, with a strong curiosity for how systems work at a deeper level. I enjoy exploring the logic behind applications, writing clean code, and continuously improving my technical skills.</p>
-                    <p>My core experience includes C, C++, HTML, CSS, and JavaScript, and I am currently working towards becoming a full-stack developer. I like turning ideas into functional and user-friendly web projects while keeping the code simple and efficient.</p>
-                    <p>I actively follow latest technology trends, tools, and development practices, because I believe staying updated is a key part of being a good developer. Learning new things and adapting to change is something I genuinely enjoy.</p>
-                    <p>Currently, I am pursuing a BCA degree specializing in AI, ML, and Cloud Computing, where I continue to strengthen my foundation in technology.</p>
+                <div class="about-text glass-card" id="about-content">
+
                 </div>
             </div>
         </section>
@@ -63,76 +60,22 @@
         <!-- Skills Section -->
         <section id="skills" class="skills section-hidden">
             <h2 class="section-title">Skills & Expertise</h2>
-            <div class="skills-wrapper">
-                <div class="skill-item glass-card">
-                    <i class="fas fa-code"></i>
-                    <span>C / C++</span>
-                </div>
-                <div class="skill-item glass-card">
-                    <i class="fab fa-java"></i>
-                    <span>Java</span>
-                </div>
-                <div class="skill-item glass-card">
-                    <i class="fab fa-python"></i>
-                    <span>Python</span>
-                </div>
-                <div class="skill-item glass-card">
-                    <i class="fab fa-html5"></i>
-                    <span>HTML</span>
-                </div>
-                <div class="skill-item glass-card">
-                    <i class="fab fa-css3-alt"></i>
-                    <span>CSS</span>
-                </div>
-                <div class="skill-item glass-card">
-                    <i class="fab fa-js"></i>
-                    <span>JavaScript</span>
-                </div>
-                <div class="skill-item glass-card">
-                    <i class="fab fa-react"></i>
-                    <span>React.js</span>
-                </div>
-                <div class="skill-item glass-card">
-                    <i class="fab fa-node"></i>
-                    <span>Node.js</span>
-                </div>
-                <div class="skill-item glass-card">
-                    <i class="fas fa-database"></i>
-                    <span>MySQL</span>
-                </div>
-                <div class="skill-item glass-card">
-                    <i class="fab fa-git-alt"></i>
-                    <span>Git</span>
-                </div>
-            </div>
-        </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="projects section-hidden">
-            <h2 class="section-title">Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card glass-card">
-                    <div class="project-img-container" style="overflow: hidden; display: flex; justify-content: center; align-items: center; background: rgba(0,0,0,0.2);">
-                        <img src="devsearch_cover.png" alt="DevSearch Cover" style="width: 100%; height: auto; display: block;">
-                    </div>
-                    <div class="project-info">
-                        <h3>DevSearch</h3>
-                        <p>A personalized learning platform with roadmaps, resources, and a dashboard — built for CS students and aspiring developers.</p>
-                        <div class="project-tech">
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JavaScript</span>
-                        </div>
-                        <div class="project-links" style="display: flex; gap: 1rem; margin-top: auto;">
-                            <a href="https://devsearch-sandy.vercel.app/" class="btn primary-btn small" target="_blank">View Live Site</a>
-                            <a href="https://github.com/ahammedadil/DevSearch" class="btn secondary-btn small" target="_blank">
-                                <i class="fab fa-github"></i> GitHub Repo
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <div class="skills-wrapper" id="skills-wrapper">
+
+                <!-- Skills will be loaded dynamically from the backend -->
+
             </div>
-        </section>
+        </section>  
+<!-- Projects Section -->
+<section id="projects" class="projects section-hidden">
+    <h2 class="section-title">Projects</h2>
+
+    <div class="projects-grid" id="projects-grid">
+
+    </div>
+
+</section>
 
         <!-- Services Section -->
         <section id="services" class="services section-hidden">
@@ -171,19 +114,42 @@
                         <span>LinkedIn</span>
                     </a>
                 </div>
-                <form class="contact-form" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScN6Ku7l7rS3xaIBtbvNRAxaX168XdEmQtVZIaduIglP6oNew/formResponse" method="POST" target="hidden_iframe">
-                    <div class="form-group">
-                        <input type="text" id="name" name="entry.1058436570" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" name="entry.108200148" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" name="entry.1345499180" rows="5" placeholder="Your Message" required></textarea>
-                    </div>
-                    <button type="submit" class="btn primary-btn submit-btn">Send Message</button>
-                </form>
-                <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>>
+                <form class="contact-form" id="contact-form">
+
+                <div class="form-group">
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Your Name"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Your Email"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <textarea
+                        id="message"
+                        rows="5"
+                        placeholder="Your Message"
+                        required
+                    ></textarea>
+                </div>
+
+                <button
+                    type="submit"
+                    class="btn primary-btn submit-btn">
+                    Send Message
+                </button>
+
+            </form>
             </div>
         </section>
     </main>

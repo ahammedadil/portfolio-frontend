@@ -82,21 +82,63 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // Form submission handling for Google Forms
+// Contact Form Submission
     const form = document.querySelector('.contact-form');
     const popup = document.getElementById('confirmation-popup');
     const closePopupBtn = document.getElementById('close-popup');
 
-    if (form) {
-        form.addEventListener('submit', (e) => {
-            // Show popup after a slight delay to ensure form is submitting
-            setTimeout(() => {
-                if (popup) {
-                    popup.classList.add('active');
+        if (form) {
+
+        form.addEventListener("submit", async (e) => {
+
+            e.preventDefault();
+
+            const formData = {
+
+                name: document.getElementById("name").value,
+
+                email: document.getElementById("email").value,
+
+                message: document.getElementById("message").value
+
+            };
+
+            try {
+
+                const response = await fetch("http://localhost:5000/api/contact", {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify(formData)
+
+                });
+
+                if (response.ok) {
+
+                    popup.classList.add("active");
+
+                    form.reset();
+
+                } else {
+
+                    alert("Failed to send message.");
+
                 }
-                form.reset();
-            }, 500);
+
+            } catch (error) {
+
+                console.error(error);
+
+                alert("Server error.");
+
+            }
+
         });
+
     }
 
     if (closePopupBtn) {
@@ -113,4 +155,163 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+
+// LOAD PROJECTS FROM BACKEND
+
+
+async function loadProjects() {
+    try {
+        console.log("Loading projects...");
+
+        const response = await fetch("http://localhost:5000/api/projects");
+
+        const projects = await response.json();
+
+        console.log(projects);
+
+        // Find the projects container
+        const projectsGrid = document.getElementById("projects-grid");
+
+        console.log(projectsGrid);
+    
+        projects.forEach(project => {
+
+    projectsGrid.innerHTML += `
+        <div class="project-card glass-card">
+
+            <div class="project-info">
+                <div class="project-badges">
+
+                    <span class="category-badge">
+                        ${project.category}
+                    </span>
+
+                </div>
+
+                <h3>${project.title}</h3>
+
+                <p>${project.description || "No description available."}</p>
+
+                <div class="project-tech">
+
+                    ${project.technology.map(tech => `
+                        <span>${tech}</span>
+                    `).join("")}
+
+                </div>
+                <div class="project-links" style="display:flex; gap:1rem; margin-top:auto;">
+
+                <a href="${project.liveDemo}"
+                class="btn primary-btn small"
+                target="_blank">
+                View Live Site
+                </a>
+
+                <a href="${project.github}"
+                class="btn secondary-btn small"
+                target="_blank">
+
+                <i class="fab fa-github"></i>
+                GitHub Repo
+
+                </a>
+
+            </div>
+
+            </div>
+
+        </div>
+    `;
+
+});
+
+    } catch (error) {
+        console.error("Error:", error);
+    }
+}
+
+loadProjects();
+
+
+// LOAD SKILLS FROM BACKEND
+
+
+async function loadSkills() {
+    try {
+
+        console.log("Loading skills...");
+
+        const response = await fetch("http://localhost:5000/api/skills");
+
+        const skills = await response.json();
+
+        console.log(skills);
+
+        const skillsWrapper = document.getElementById("skills-wrapper");
+
+        skillsWrapper.innerHTML = "";
+
+        skills.forEach(skill => {
+
+            skillsWrapper.innerHTML += `
+                <div class="skill-item glass-card">
+
+                    <i class="${skill.icon}"></i>
+
+                    <span>${skill.name}</span>
+
+                </div>
+            `;
+
+        });
+
+    } catch (error) {
+
+        console.error("Error loading skills:", error);
+
+    }
+}
+
+loadSkills();
+
+
+
+// LOAD ABOUT FROM BACKEND
+
+
+async function loadAbout() {
+    try {
+
+        console.log("Loading about...");
+
+        const response = await fetch("http://localhost:5000/api/about");
+
+        const about = await response.json();
+
+        console.log(about);
+
+        const aboutContent = document.getElementById("about-content");
+
+        aboutContent.innerHTML = "";
+
+        about.bio.forEach(paragraph => {
+
+            aboutContent.innerHTML += `
+                <p>${paragraph}</p>
+            `;
+
+        });
+
+    } catch (error) {
+
+        console.error("Error loading about:", error);
+
+    }
+}
+
+loadAbout();
+
+
+
 });
