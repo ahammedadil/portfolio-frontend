@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             try {
 
-                const response = await fetch("http://localhost:5000/api/contact", {
+                const response = await fetch("https://portfolio-backend-qcjm.onrender.com/api/contact", {
 
                     method: "POST",
 
@@ -164,7 +164,7 @@ async function loadProjects() {
     try {
         console.log("Loading projects...");
 
-        const response = await fetch("http://localhost:5000/api/projects");
+        const response = await fetch("https://portfolio-backend-qcjm.onrender.com/api/projects");
 
         const projects = await response.json();
 
@@ -242,7 +242,7 @@ async function loadSkills() {
 
         console.log("Loading skills...");
 
-        const response = await fetch("http://localhost:5000/api/skills");
+        const response = await fetch("https://portfolio-backend-qcjm.onrender.com/api/skills");
 
         const skills = await response.json();
 
@@ -285,7 +285,7 @@ async function loadAbout() {
 
         console.log("Loading about...");
 
-        const response = await fetch("http://localhost:5000/api/about");
+        const response = await fetch("https://portfolio-backend-qcjm.onrender.com/api/about");
 
         const about = await response.json();
 
